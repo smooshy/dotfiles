@@ -1,4 +1,3 @@
-source ~/.git-completion.sh
 source ~/.git-aliases
 source ~/.ruby
 
