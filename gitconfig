@@ -1,5 +1,5 @@
 [user]
-	email = stan@scope5.com
+	email = stan.rawrysz@socrata.com
 	name = Stan Rawrysz
 [color]
     diff = auto
@@ -62,20 +62,7 @@
 
     # nice graphical log output
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[diff]
-	tool = Kaleidoscope
-[difftool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool]
-	prompt = false
-[merge]
-	tool = Kaleidoscope
 [push]
-	default = matching
+	default = simple
 [core]
 	editor = /usr/bin/vim

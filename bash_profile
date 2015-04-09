@@ -1,6 +1,4 @@
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
@@ -8,7 +6,7 @@ fi
 [ -r ~/.bashrc ] && source ~/.bashrc
 
 # cert.pem file for openssl 
-export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+export SSL_CERT_FILE=/usr/local/etc/cacert.pem
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
@@ -116,4 +114,24 @@ else \
     # @2 - Prompt when not in GIT repo
     echo " '$Yellow$PathShort$Color_Off'\$ "; \
 fi)'
+
+
+function setjdk() {
+    if [ $# -ne 0 ]; then
+        removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+        if [ -n "${JAVA_HOME+x}" ]; then
+            removeFromPath $JAVA_HOME
+        fi
+        export JAVA_HOME=`/usr/libexec/java_home -v $@`
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
+}
+function removeFromPath() {
+    export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+setjdk 1.7
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export PATH=/opt/chefdk/bin:$PATH
 
