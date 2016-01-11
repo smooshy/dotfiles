@@ -32,6 +32,7 @@ alias gpick="git cherry-pick"
 alias current_branch="git symbolic-ref HEAD 2>/dev/null | cut -c12-"
 alias me_and="pair me_and"
 alias just_me="pair just_me"
+alias fs="foreman start"
 
 # stolen from: http://stackoverflow.com/questions/342969/how-do-i-get-bash-completion-to-work-with-aliases
 if [[ -z $ZSH ]]; then
