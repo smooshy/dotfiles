@@ -62,6 +62,9 @@
 
     # nice graphical log output
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+    # get last commit of given file
+    lastchange = log -p --follow -n 1
 [push]
 	default = simple
 [core]
